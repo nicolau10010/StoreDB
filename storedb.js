@@ -21,8 +21,12 @@
       },
 
       find: function (obj, callback) {
-        if (arguments.length == 0) {
-          return cache;
+        if (!obj) {
+          if(callback){
+            callback(err, cache);
+          } else {
+            return cache;  
+          }
         } else {
           var result = [];
 
@@ -99,9 +103,7 @@
 
         if (callback)
           callback(err);
-
       }
-
     };
   };
 }));
